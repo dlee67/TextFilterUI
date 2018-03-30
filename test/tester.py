@@ -18,7 +18,7 @@ class Tester(unittest.TestCase):
     def test_innitFile(self):
         tagger = WordTagger()
         tagger.innitFile("../src/SampleTxtFiles/poem_of_unicorn.txt")
-        print("Content of the afterReading:\n", tagger.afterReading)
+        #print("Content of the afterReading:\n", tagger.afterReading)
         self.assertEqual(tagger.afterReading, open("../src/SampleTxtFiles/poem_of_unicorn.txt", "r").read())
 
     def test_addTriggerPattern(self):
@@ -26,6 +26,19 @@ class Tester(unittest.TestCase):
         tagger.addTriggerPattern("Red Frame")
         tagger.addTriggerPattern("Blue Frame")
         self.assertEqual(tagger.triggerPattern, ["Red Frame", "Blue Frame"])
+
+    def test_tokenizeNeedsTagging(self):
+        tagger = WordTagger()
+        tagger.innitFile("../src/SampleTxtFiles/sample_one.txt")
+        tagger.tokenizeNeedsTagging()
+        self.assertEqual(tagger.tokens, ["sample", "sample", "sample"])
+
+    def test_countFrequency(self):
+        tagger = WordTagger()
+        tagger.innitFile("../src/SampleTxtFiles/sample_one.txt")
+        tagger.tokenizeNeedsTagging()
+        tagger.countFrequency("sample")
+        self.assertEqual(tagger.isCounter, 1)
 
 if __name__ == "__main__":
     unittest.main()
