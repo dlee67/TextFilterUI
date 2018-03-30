@@ -1,0 +1,17 @@
+So, which types of e-mail are you gonna filter?
+Doesn't necessarily has to be a spam.
+
+Meaning, I don't have to think about making the spam filtering application,
+but I should focus on making e-mail filtering application.
+
+Well, should I try to count the regex patter?
+
+-------------------------------------------------------------------------------
+
+- Now that I think about it, why don't I try to make this so that it's actually 
+a convincing product...? 
+
+-------------------------------------------------------------------------------
+
+- For now, let's just have the application consume name of the file from the 
+parameter.

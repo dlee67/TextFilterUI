@@ -1,2 +1,8 @@
 # TextFilterUI
 This application classifies the text file under a user specified category.
+
+# What do you mean?
+Under the assumption that I have an ML algorithm trained with bunch of text filed (could be e-mails, could be books, etc...), classfied in binary manner, when the new text file is fed to it, the application guesses which category the text file belongs to.
+
+# Okay, how does it work?
+Each text fileds will be deciphered as a 0, or 1, in accordance to the user's specified pattern (ofcourse, this includes regex). Each time when user specified pattern is dedected in the text file being processed, isCounter is incremented. When the isCounter exceeds the certain amount of value, it will be flagged as either of the binary number.
