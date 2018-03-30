@@ -5,7 +5,10 @@ import unittest
 import sys
 sys.path.append("../src")
 #sys.path.append("../src/SampleTxtFiles")
+import os
 from WordTagger import WordTagger
+from unittest.mock import patch
+from unittest import TestCase
 
 class Tester(unittest.TestCase):
 
@@ -48,6 +51,14 @@ class Tester(unittest.TestCase):
         tagger.addTriggerPattern("sample")
         tagger.matchPattern()
         self.assertEqual(tagger.isCounter, 3)
+
+    def test_changeThreshold(self):
+        tagger = WordTagger()
+        self.assertEqual(tagger.threshold, 5)
+        # Trying to supply the changeThreshold() with value from the stdin,
+        # don't know how to, yet.
+        #@patch('changeThreshold.input', return_value="3")
+        tagger.changeThreshold()
 
 if __name__ == "__main__":
     unittest.main()

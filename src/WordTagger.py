@@ -16,6 +16,7 @@ class WordTagger(object):
         self.afterReading = None
         self.tokens = None
         self.triggerPattern =[]
+        self.threshold = 5
         self.verboseMode = False
         self.isCategory = False
         print("WordTagger has been innitialized.")
@@ -96,3 +97,17 @@ class WordTagger(object):
                 "tokenizeNeedsTagging <- Tokenizes the consumed text file.\n",
                 "countFrequency <- Counts the frequency of a certain string token.\n",
                 "toString <- prints out all the contents within the fields of WordTagger object, with it's data type.")
+
+    def changeThreshold(self):
+        if(self.verboseMode == True):
+            print("The current threshold is:", self.threshold)
+        userInput = int(input("To which value would you like to change the threshold to?"))
+        if((userInput > 0) == False):
+            print("Invalid input, changing the threshold to default value 5.")
+            self.threshold = 5
+            return
+        self.threshold = userInput
+
+    def finalize(self):
+        if(self.threshold < self.isCounter):
+            self.isCategory = True
