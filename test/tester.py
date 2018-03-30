@@ -23,6 +23,7 @@ class Tester(unittest.TestCase):
 
     def test_addTriggerPattern(self):
         tagger = WordTagger()
+        #Reference to Gundam Seed Astray
         tagger.addTriggerPattern("Red Frame")
         tagger.addTriggerPattern("Blue Frame")
         self.assertEqual(tagger.triggerPattern, ["Red Frame", "Blue Frame"])
@@ -38,7 +39,15 @@ class Tester(unittest.TestCase):
         tagger.innitFile("../src/SampleTxtFiles/sample_one.txt")
         tagger.tokenizeNeedsTagging()
         tagger.countFrequency("sample")
-        self.assertEqual(tagger.isCounter, 1)
+        self.assertEqual(tagger.isCounter, 3)
+
+    def test_matchPattern(self):
+        tagger = WordTagger()
+        tagger.innitFile("../src/SampleTxtFiles/sample_one.txt")
+        tagger.tokenizeNeedsTagging()
+        tagger.addTriggerPattern("sample")
+        tagger.matchPattern()
+        self.assertEqual(tagger.isCounter, 3)
 
 if __name__ == "__main__":
     unittest.main()

@@ -36,7 +36,7 @@ class WordTagger(object):
     def matchPattern(self):
         freqDist = nltk.FreqDist(self.tokens)
         for pattern in self.triggerPattern:
-            if(verboseMode == True):
+            if(self.verboseMode == True):
                 print("Current pattern: ", pattern)
                 print("Current frequency of the pattern: ", freqDist[pattern])
             self.isCounter = self.isCounter + freqDist[pattern]
@@ -70,6 +70,7 @@ class WordTagger(object):
 # Increment the isCounter separate from the matchPattern method, and string token specified by the user.
 # In this case, findThis argument will be used for comparison, and the isCounter will be incremented
 # according to that.
+# Each time when the specified pattern is found, increase the isCounter.
     def countFrequency(self, findThis, limit=3):
         fDistObj = nltk.FreqDist(self.tokens)
         if(self.verboseMode):
@@ -78,10 +79,7 @@ class WordTagger(object):
         #I am guessing the frequency distribution cannot consume anything aside from
         #tokenized string.
         print("The word", findThis, "has occured this much:", amtOfOccur)
-        if(limit > 3):
-            if(input("The frequency of the specified token has occured for more than 3 times, increase the counter? Type n for no") == "n"):
-                return;
-            isCounter = isCounter + 1
+        self.isCounter = self.isCounter + amtOfOccur
 
 # As the name suggests
     def toString(self):
