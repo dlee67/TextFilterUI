@@ -20,9 +20,10 @@ def ready():
        "3 <- To append the pattern which increases the counter for the desired categorization.\n",
        "4 <- To list the patterns that would trigger the counter.\n",
        "5 <- Increment the counter, in accordance to the existing patterns.\n",
-       "6 <- display the amount of existing counters\n",
-       "7 <- Change the value of the threshold",
-       "8 <- Display the value of the threshold",
+       "6 <- display the amount of existing patternMatchCount\n",
+       "7 <- Change the value of the matchCountThreshold",
+       "8 <- Display the value of the tokenCountThreshold",
+       "9 <- With the current token, assign the amount of tokens to tokenCount.",
        "q <- Terminate this application.")
        select = input("Enter a number to innitiate the action (or a character) to inniate an action: ")
        processInput(select)
@@ -41,15 +42,19 @@ def processInput(userInput):
    if(userInput == "5"):
       tagger.matchPattern()
    if(userInput == "6"):
-      tagger.printIsCounter()
+      tagger.printPatternMatchCount()
    if(userInput == "7"):
         while(True):
-            usrInput = int(input("Type in the numerical value, which will replace the threshold."))
+            usrInput = int(input("Type in the numerical value, which will replace the matchCountThreshold."))
             if(usrInput <= 0):
                 print("Invalid input, the input must be bigger than ")
                 continue
-            taggerself.changeThreshold(usrInput)
+            taggerself.changeMatchCountThreshold(usrInput)
             return
+   if(userInput == "8"):
+        print("The current matchCountThreshold is:", tagger.tokenCountThreshold)
+   if(userInput == "9"):
+        tagger.setTokenCount()
    if(userInput == "q"):
       tagger.finalize()
       print("Terminating this application.")
@@ -60,9 +65,9 @@ if __name__ == "__main__":
    if(len(sys.argv) > 2):
       processOptions()
       tagger.fileToString(sys.argv[2])
-      tagger.tokenizetextFileContent()
+      tagger.tokenizeTextFileContent()
       ready()
    if(len(sys.argv) <= 2):
       tagger.fileToString(sys.argv[1])
-      tagger.tokenizetextFileContent()
+      tagger.tokenizeTextFileContent()
       ready()

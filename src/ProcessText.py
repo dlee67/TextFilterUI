@@ -3,22 +3,27 @@
 import nltk
 
 class ProcessText(object):
-# The isCounter will be used to assign the boolean value of is category, after certain limit has passed.
+# patternMatchCount is increased each time when the userSpecified patterns are matched in the text being processed.
+# tokenCount is set to the amount of token existing.
+# tokenCountThreshold will be used in the finalize() to determine the boolean value of the isCategory
 # innitialTextFile is the fresh text file, that needs to be tokenized.
 # textFileContent is the text file in the form of string data type.
 # tokens are the string tokens fetched from the innitialTextFile.
-# triggerPattern is user specified string tokens, which will increment the isCounter.
+# triggerPattern is user specified string tokens, which will increment the patternMatchCount.
 # verboseMode, when true, will obligate the ProcessText.py to verbosely explain everything that is going on.
-# isCategory will have to be assigned with a True value, if the isCounter exceeds the specified limit.
+# isCategory will have to be assigned with a True value, if the patternMatchCount exceeds the specified limit.
     def __init__(self):
-        self.isCounter = 0
+        self.patternMatchCount = 0
+        self.matchCountThreshold = 5
+        self.tokenCount = 0
+        self.tokenCountThreshold = 25
+        self.isCategory = False
+
         self.innitialTextFile = None
         self.textFileContent = None
         self.tokens = None
         self.triggerPattern =[]
-        self.threshold = 5
         self.verboseMode = False
-        self.isCategory = False
         print("ProcessText has been innitialized.")
 
 # Prints out the content inside the textFileContent
@@ -29,21 +34,21 @@ class ProcessText(object):
     def printTriggerPattern(self):
         print("The patterns for incrementing the counter is: ", self.triggerPattern[:])
 
-# Prints out the content inside the isCounter
-    def printIsCounter(self):
-        print("Currently, the amount of counter is: ", self.isCounter)
+# Prints out the content inside the patternMatchCount
+    def printPatternMatchCount(self):
+        print("Currently, the amount of counter is: ", self.patternMatchCount)
 
-# By comparing the tokens to the user specified patterns, increment the isCounter.
+# By comparing the tokens to the user specified patterns, increment the patternMatchCount.
     def matchPattern(self):
         freqDist = nltk.FreqDist(self.tokens)
         for pattern in self.triggerPattern:
             if(self.verboseMode == True):
                 print("Current pattern: ", pattern)
                 print("Current frequency of the pattern: ", freqDist[pattern])
-            self.isCounter = self.isCounter + freqDist[pattern]
+            self.patternMatchCount = self.patternMatchCount + freqDist[pattern]
 
 # Enables the user to append a pattern to the triggerPattern list, which will be used to increment
-# the isCounter, each time when the user specified pattern is found.
+# the patternMatchCount, each time when the user specified pattern is found.
     def addTriggerPattern(self, userInput):
         if(self.verboseMode):
             print("In the addTriggerPattern block.")
@@ -63,24 +68,35 @@ class ProcessText(object):
         self.textFileContent = self.innitialTextFile.read()
 
 # As the name suggests
-    def tokenizetextFileContent(self):
+    def tokenizeTextFileContent(self):
         if(self.verboseMode):
-            print("In the block for tokenizetextFileContent.")
+            print("In the block for tokenizeTextFileContent.")
         self.tokens = nltk.word_tokenize(self.textFileContent)
 
-# Increment the isCounter separate from the matchPattern method, and string token specified by the user.
-# In this case, findThis argument will be used for comparison, and the isCounter will be incremented
+# Increment the patternMatchCount separate from the matchPattern method, and string token specified by the user.
+# In this case, findThis argument will be used for comparison, and the patternMatchCount will be incremented
 # according to that.
-# Each time when the specified pattern is found, increase the isCounter.
+# Each time when the specified pattern is found, increase the patternMatchCount.
     def countFrequency(self, findThis, limit=3):
         fDistObj = nltk.FreqDist(self.tokens)
         if(self.verboseMode):
             print("Consumed:", fDistObj.keys())
-        amtOfOccur = fDistObj[findThis]
+        amtOfPatternOccurred = fDistObj[findThis]
         #I am guessing the frequency distribution cannot consume anything aside from
         #tokenized string.
-        print("The word", findThis, "has occured this much:", amtOfOccur)
-        self.isCounter = self.isCounter + amtOfOccur
+        print("The word", findThis, "has occured this much:", amtOfPatternOccurred)
+        self.patternMatchCount = self.patternMatchCount + amtOfPatternOccurred
+
+    def setTokenCount(self):
+        self.tokenCount = len(self.tokens)
+
+    def setTokenCountThreshold(self, userInput):
+        if(int(userInput) <= 0):
+            print("Input must be bigger than 0, setting the tokenCountThreshold to default (which is 25).")
+            self.tokenCountThreshold = 25
+            return
+        self.tokenCountThreshold = userInput
+
 
 # As the name suggests
     def toString(self):
@@ -94,19 +110,21 @@ class ProcessText(object):
     def listFunctions(self):
         print("verboseModeOn <- Each functions prints out the results.\n",
                 "fileToString <- Consumes the text file, and prepares it to be tokenized.\n",
-                "tokenizetextFileContent <- Tokenizes the consumed text file.\n",
+                "tokenizeTextFileContent <- Tokenizes the consumed text file.\n",
                 "countFrequency <- Counts the frequency of a certain string token.\n",
                 "toString <- prints out all the contents within the fields of ProcessText object, with it's data type.")
 
-    def changeThreshold(self, userInput):
+    def changeMatchCountThreshold(self, userInput):
         if(self.verboseMode == True):
-            print("The current threshold is:", self.threshold)
+            print("The current matchCountThreshold is:", self.matchCountThreshold)
         if((userInput > 0) == False):
-            print("Invalid input, changing the threshold to default value 5.")
-            self.threshold = 5
+            print("Invalid input, changing the matchCountThreshold to default value 5.")
+            self.matchCountThreshold = 5
             return
-        self.threshold = userInput
+        self.matchCountThreshold = userInput
 
     def finalize(self):
-        if(self.threshold < self.isCounter):
+        if((self.matchCountThreshold < self.patternMatchCount) and (self.tokenCountThreshold < self.tokenCount)):
             self.isCategory = True
+            return
+        return

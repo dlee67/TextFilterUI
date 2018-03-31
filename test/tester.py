@@ -30,45 +30,61 @@ class Tester(unittest.TestCase):
         tagger.addTriggerPattern("Blue Frame")
         self.assertEqual(tagger.triggerPattern, ["Red Frame", "Blue Frame"])
 
-    def test_tokenizetextFileContent(self):
+    def test_tokenizeTextFileContent(self):
         tagger = ProcessText()
         tagger.fileToString("../src/SampleTxtFiles/sample_one.txt")
-        tagger.tokenizetextFileContent()
+        tagger.tokenizeTextFileContent()
         self.assertEqual(tagger.tokens, ["sample", "sample", "sample"])
 
     def test_countFrequency(self):
         tagger = ProcessText()
         tagger.fileToString("../src/SampleTxtFiles/sample_one.txt")
-        tagger.tokenizetextFileContent()
+        tagger.tokenizeTextFileContent()
         tagger.countFrequency("sample")
-        self.assertEqual(tagger.isCounter, 3)
+        self.assertEqual(tagger.patternMatchCount, 3)
 
     def test_matchPattern(self):
         tagger = ProcessText()
         tagger.fileToString("../src/SampleTxtFiles/sample_one.txt")
-        tagger.tokenizetextFileContent()
+        tagger.tokenizeTextFileContent()
         tagger.addTriggerPattern("sample")
         tagger.matchPattern()
-        self.assertEqual(tagger.isCounter, 3)
+        self.assertEqual(tagger.patternMatchCount, 3)
 
-    def test_changeThreshold(self):
+    def test_changeMatchCountThreshold(self):
         tagger = ProcessText()
-        self.assertEqual(tagger.threshold, 5)
-        # Trying to supply the changeThreshold() with value from the stdin,
+        self.assertEqual(tagger.matchCountThreshold, 5)
+        # Trying to supply the changeMatchCountThreshold() with value from the stdin,
         # don't know how to, yet.
         # 03/30/18 Gave up on having the python generate the mock stdin for now.
-        tagger.changeThreshold(3)
-        self.assertEqual(tagger.threshold, 3)
-        tagger.changeThreshold(int(-3))
-        self.assertEqual(tagger.threshold, 5)
+        tagger.changeMatchCountThreshold(3)
+        self.assertEqual(tagger.matchCountThreshold, 3)
+        tagger.changeMatchCountThreshold(int(-3))
+        self.assertEqual(tagger.matchCountThreshold, 5)
 
     def test_finalize(self):
         tagger = ProcessText()
         tagger.finalize()
         self.assertEqual(tagger.isCategory, False)
-        tagger.isCounter = 7
+        tagger.patternMatchCount = 7
+        tagger.tokenCount = 30
         tagger.finalize()
         self.assertEqual(tagger.isCategory, True)
+
+    def test_setTokenCount(self):
+        tagger = ProcessText()
+        tagger.fileToString("../src/SampleTxtFiles/sample_one.txt")
+        tagger.tokenizeTextFileContent()
+        tagger.setTokenCount()
+        self.assertEqual(tagger.tokenCount, 3)
+
+    def test_setTokenCountThreshold(self):
+        tagger = ProcessText()
+        tagger.fileToString("../src/SampleTxtFiles/sample_one.txt")
+        tagger.tokenizeTextFileContent()
+        self.assertEqual(tagger.tokenCountThreshold, 25)
+        tagger.setTokenCountThreshold(5)
+        self.assertEqual(tagger.tokenCountThreshold, 5)
 
 if __name__ == "__main__":
     unittest.main()

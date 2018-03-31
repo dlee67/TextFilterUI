@@ -12,4 +12,7 @@ I don't like certain traits about it (like, needing to care about the whitespace
 
 # 03/30/18
 Not sure if nltk.FreqDist() can count frequency of the pattern according to the regex pattern because when *[A-Za-z]
-is used to count up the isCounter, the tester.py fails. 
+is used to count up the isCounter, the tester.py fails.
+
+# 03/31/18
+I think the ProcessText.py, main.py, and the tester.py are completed enough?
