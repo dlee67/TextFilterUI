@@ -97,7 +97,6 @@ class ProcessText(object):
             return
         self.tokenCountThreshold = userInput
 
-
 # As the name suggests
     def toString(self):
         print("The needTagging is: ", self.needTagging.read(),
