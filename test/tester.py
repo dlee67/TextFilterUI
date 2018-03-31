@@ -7,7 +7,6 @@ sys.path.append("../src")
 #sys.path.append("../src/SampleTxtFiles")
 import os
 from WordTagger import WordTagger
-from unittest.mock import patch
 from unittest import TestCase
 
 class Tester(unittest.TestCase):
@@ -57,8 +56,11 @@ class Tester(unittest.TestCase):
         self.assertEqual(tagger.threshold, 5)
         # Trying to supply the changeThreshold() with value from the stdin,
         # don't know how to, yet.
-        #@patch('changeThreshold.input', return_value="3")
-        tagger.changeThreshold()
+        # 03/30/18 Gave up on having the python generate the mock stdin for now.
+        tagger.changeThreshold(3)
+        self.assertEqual(tagger.threshold, 3)
+        tagger.changeThreshold(-3)
+        self.assertEqual(tagger.threshold, 5)
 
 if __name__ == "__main__":
     unittest.main()

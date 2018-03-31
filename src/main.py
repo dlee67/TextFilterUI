@@ -21,6 +21,8 @@ def ready():
        "4 <- To list the patterns that would trigger the counter.\n",
        "5 <- Increment the counter, in accordance to the existing patterns.\n",
        "6 <- display the amount of existing counters\n",
+       "7 <- Change the value of the threshold",
+       "8 <- Display the value of the threshold",
        "q <- Terminate this application.")
        select = input("Enter a number to innitiate the action (or a character) to inniate an action: ")
        processInput(select)
@@ -40,6 +42,13 @@ def processInput(userInput):
       tagger.matchPattern()
    if(userInput == "6"):
       tagger.printCounter()
+   if(userInput == "7"):
+        while(True):
+            usrInput = int(input("Type in the numerical value, which will replace the threshold."))
+            if(usrInput <= 0):
+                print("Invalid input")
+                continue
+
    if(userInput == "q"):
       print("Terminating this application.")
       sys.exit()
