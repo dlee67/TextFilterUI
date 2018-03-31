@@ -1,7 +1,7 @@
-from WordTagger import WordTagger
+from ProcessText import ProcessText
 import sys
 
-tagger = WordTagger()
+tagger = ProcessText()
 
 def processOptions():
    print(sys.argv[:])
@@ -30,7 +30,7 @@ def ready():
 def processInput(userInput):
    print("You typed:", userInput)
    if(userInput == "1"):
-      tagger.printAfterReading()
+      tagger.printtextFileContent()
    if(userInput == "2"):
       argument = input("Type in the desired token to find the frequency for: ")
       tagger.countFrequency(argument)
@@ -41,15 +41,17 @@ def processInput(userInput):
    if(userInput == "5"):
       tagger.matchPattern()
    if(userInput == "6"):
-      tagger.printCounter()
+      tagger.printIsCounter()
    if(userInput == "7"):
         while(True):
             usrInput = int(input("Type in the numerical value, which will replace the threshold."))
             if(usrInput <= 0):
-                print("Invalid input")
+                print("Invalid input, the input must be bigger than ")
                 continue
-
+            taggerself.changeThreshold(usrInput)
+            return
    if(userInput == "q"):
+      tagger.finalize()
       print("Terminating this application.")
       sys.exit()
 
@@ -57,10 +59,10 @@ if __name__ == "__main__":
    print("argvs are: ", sys.argv[:])
    if(len(sys.argv) > 2):
       processOptions()
-      tagger.innitFile(sys.argv[2])
-      tagger.tokenizeNeedsTagging()
+      tagger.fileToString(sys.argv[2])
+      tagger.tokenizetextFileContent()
       ready()
    if(len(sys.argv) <= 2):
-      tagger.innitFile(sys.argv[1])
-      tagger.tokenizeNeedsTagging()
+      tagger.fileToString(sys.argv[1])
+      tagger.tokenizetextFileContent()
       ready()
