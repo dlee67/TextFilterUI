@@ -4,7 +4,6 @@
 import unittest
 import sys
 sys.path.append("../src")
-#sys.path.append("../src/SampleTxtFiles")
 import os
 from ProcessText import ProcessText
 from unittest import TestCase
