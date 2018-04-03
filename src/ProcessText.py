@@ -128,7 +128,10 @@ class ProcessText(object):
         self.matchCountThreshold = userInput
 
     def finalize(self):
-        if((self.matchCountThreshold < self.patternMatchCount) and (self.tokenCountThreshold < self.tokenCount)):
+        print("finalized called.\n")
+        print("Token count now:", self.tokenCount, "\n")
+        print("Pattern match count:", self.patternMatchCount, "\n")
+        if((self.matchCountThreshold <= self.patternMatchCount) and (self.tokenCountThreshold <= self.tokenCount)):
             self.isCategory = True
             return
         return

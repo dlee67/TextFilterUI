@@ -20,3 +20,7 @@ class ConsumeText(object):
         fileBeingProcessed.setTokenCount()
         fileBeingProcessed.finalize()
         self.listOfProcessedText.append(fileBeingProcessed)
+
+    def displayList(self):
+        for obj in self.listOfProcessedText:
+            print(obj.isCategory)

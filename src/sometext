@@ -34,4 +34,18 @@ mechanism.
 
 - So, people tend prefer os.path.join() over ./ because it's more stable?
 
- 
+- approach to a problem doesn't necessarily have to be a technique, technique must be something along the line of
+lower level of meta-recognition.
+Meannig, strategy vs tactics. 
+
+- It's funny, data structures used to be an entity, but now it's a technique used to approach problems.
+
+-------------------------------------------------------------------------------
+
+- To get the most "clicks," there is a need to have the most adventures to the new concepts.
+
+- Since, it's a unit test, 1-5 SHOULD OBLIGATORILY be TRUE, and 6-10 should be False.
+
+-------------------------------------------------------------------------------
+
+- MatchCount not increasing, then, what's around the patterMatchCount
