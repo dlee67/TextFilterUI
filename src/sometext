@@ -7,11 +7,31 @@ but I should focus on making e-mail filtering application.
 Well, should I try to count the regex patter?
 
 -------------------------------------------------------------------------------
-
 - Now that I think about it, why don't I try to make this so that it's actually 
 a convincing product...? 
+-------------------------------------------------------------------------------
+- For now, let's just have the application consume name of the file from the 
+parameter.
+-------------------------------------------------------------------------------
+
+- I understand why professionals encourage others to user techniques such as UML,
+each time when I am calling a function/method in other classes, I have to throughly look through
+the list of functions those are available to me.
 
 -------------------------------------------------------------------------------
 
-- For now, let's just have the application consume name of the file from the 
-parameter.
+- If user interface = program interface, then that means....
+
+|---------|			|-----------|
+|interface| ----> |mechanism	|
+|		    |			|				|
+|---------|			|-----------|
+
+- therefore, the proper practice for me to take would be something along the line of 
+having the mechanism portion contain the classes with parameters,
+and have the interface portion be composed of a class, that's calls the classes in the 
+mechanism.
+
+- So, people tend prefer os.path.join() over ./ because it's more stable?
+
+ 

@@ -1,6 +1,6 @@
 from ProcessText import ProcessText
 import sys
-
+#sys.path.append("./SampleTxtFiles")
 tagger = ProcessText()
 
 def processOptions():
@@ -21,9 +21,11 @@ def ready():
        "4 <- To list the patterns that would trigger the counter.\n",
        "5 <- Increment the counter, in accordance to the existing patterns.\n",
        "6 <- display the amount of existing patternMatchCount\n",
-       "7 <- Change the value of the matchCountThreshold",
-       "8 <- Display the value of the tokenCountThreshold",
-       "9 <- With the current token, assign the amount of tokens to tokenCount.",
+       "7 <- Change the value of the matchCountThreshold\n",
+       "8 <- Display the value of the tokenCountThreshold\n",
+       "9 <- With the current token, assign the amount of tokens to tokenCount.\n",
+       "10 <- Change the value of the tokenCountThreshold\n",
+       "11 <- Finalize the ProcessText object\n",
        "q <- Terminate this application.")
        select = input("Enter a number to innitiate the action (or a character) to inniate an action: ")
        processInput(select)
@@ -31,7 +33,7 @@ def ready():
 def processInput(userInput):
    print("You typed:", userInput)
    if(userInput == "1"):
-      tagger.printtextFileContent()
+      tagger.printTextFileContent()
    if(userInput == "2"):
       argument = input("Type in the desired token to find the frequency for: ")
       tagger.countFrequency(argument)
@@ -45,18 +47,27 @@ def processInput(userInput):
       tagger.printPatternMatchCount()
    if(userInput == "7"):
         while(True):
-            usrInput = int(input("Type in the numerical value, which will replace the matchCountThreshold."))
+            usrInput = int(input("Type in the numerical value, which will replace the matchCountThreshold: "))
             if(usrInput <= 0):
-                print("Invalid input, the input must be bigger than ")
+                print("Invalid input, the input must be bigger than 0, at least.")
                 continue
-            taggerself.changeMatchCountThreshold(usrInput)
+            tagger.changeMatchCountThreshold(usrInput)
             return
    if(userInput == "8"):
-        print("The current matchCountThreshold is:", tagger.tokenCountThreshold)
+        print("The current tokenCountThreshold is:", tagger.tokenCountThreshold)
    if(userInput == "9"):
         tagger.setTokenCount()
-   if(userInput == "q"):
+   if(userInput == "10"):
+        while(True):
+            usrInput = int(input("Type in the numerical value, which will replace the tokenCountThreshold: "))
+            if(usrInput <= 0):
+                print("Invalid input, the input must be bigger than 0, at least.")
+                continue
+            tagger.setTokenCountThreshold(usrInput)
+            return
+   if(userInput == "11"):
       tagger.finalize()
+   if(userInput == "q"):
       print("Terminating this application.")
       sys.exit()
 

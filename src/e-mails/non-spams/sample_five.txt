@@ -1,0 +1,4 @@
+I forgot to mention, that I was referring to the actions that the ‘Left’ and ‘Right’
+buttons in the toolbar, would do in a Lisp buffer. So when one opens a file,
+and you press the Left button, it takes you back to the last buffer visited.
+While pressing the right button takes you forward.

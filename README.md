@@ -17,4 +17,4 @@ is used to count up the isCounter, the tester.py fails.
 # 03/31/18
 The code became much more "cleaner," and added a new class variable called tokenCount because the ML algorithm
 I am about to feed the data to needs values representable as x-axis value and y-axis value.
-I think the ProcessText.py, main.py, and the tester.py are completed enough?
+I think the ProcessText.py, main.py, and the ProcessTextTester.py are completed enough?

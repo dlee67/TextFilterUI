@@ -1,6 +1,9 @@
 # Turns out, read() doesn't return anything.
 # https://stackoverflow.com/questions/3211031/python-file-read
 import nltk
+import os
+import sys
+#sys.path.append("./e-mails")
 
 class ProcessText(object):
 # patternMatchCount is increased each time when the userSpecified patterns are matched in the text being processed.
@@ -27,7 +30,7 @@ class ProcessText(object):
         print("ProcessText has been innitialized.")
 
 # Prints out the content inside the textFileContent
-    def printtextFileContent(self):
+    def printTextFileContent(self):
         print("Consumed content\n:", self.textFileContent, "\n")
 
 # Prints out the content inside the triggerPattern
@@ -64,8 +67,10 @@ class ProcessText(object):
     def fileToString(self, fileName):
         if(self.verboseMode):
             print("In the block of fileToString.")
+        fileName = os.path.join(os.path.dirname(__file__), fileName)
         self.innitialTextFile = open(fileName, "r")
         self.textFileContent = self.innitialTextFile.read()
+        self.innitialTextFile.close()
 
 # As the name suggests
     def tokenizeTextFileContent(self):
@@ -95,7 +100,7 @@ class ProcessText(object):
             print("Input must be bigger than 0, setting the tokenCountThreshold to default (which is 25).")
             self.tokenCountThreshold = 25
             return
-        self.tokenCountThreshold = userInput
+        self.tokenCountThreshold = int(userInput)
 
 # As the name suggests
     def toString(self):
