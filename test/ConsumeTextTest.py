@@ -25,5 +25,11 @@ class Tester(unittest.TestCase):
         testObj.populateList("./e-mails/non-spams/sample_five.txt", ["Dear", "Dong", "company"]) # Where ConsumeText will have list of ProcessText objects, waitingto be deciphered in the ML algorithm.
         self.assertEqual(len(testObj.listOfProcessedText), 10)
 
+    def test_ConsumeTextContents(self):
+        testObj = ConsumeText()
+        testObj.populateList("./e-mails/spams/sample_one.txt", ["Dear", "Dong", "company"]) # Where ConsumeText will have list of ProcessText objects, waitingto be deciphered in the ML algorithm.
+        self.assertEqual(testObj.listOfProcessedText[0].textFileContent, open(, "r").read()) # Need to pass in the directory of sample_one.txt in spams.
+
+
 if __name__ == "__main__":
     unittest.main()
