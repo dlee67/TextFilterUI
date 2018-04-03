@@ -33,8 +33,8 @@ class Tester(unittest.TestCase):
     def test_ConsumeTextContents(self):
         testObj = ConsumeText()
         testObj.populateList("./e-mails/spams/sample_one.txt", ["Dear", "Dong", "company"]) # Where ConsumeText will have list of ProcessText objects, waitingto be deciphered in the ML algorithm.
-        self.assertEqual(testObj.listOfProcessedText[0].textFileContent, open("./e-mails/spams/sample_one.txt", "r").read())
-
+        self.assertEqual(testObj.listOfProcessedText[0].textFileContent, open(os.path.join(os.path.dirname(__file__) + "/../src/e-mails/spams/sample_one.txt"), "r").read())
+        
 
 if __name__ == "__main__":
     unittest.main()
