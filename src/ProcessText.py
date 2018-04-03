@@ -92,6 +92,9 @@ class ProcessText(object):
         print("The word", findThis, "has occured this much:", amtOfPatternOccurred)
         self.patternMatchCount = self.patternMatchCount + amtOfPatternOccurred
 
+    def setTriggerPattern(self, userInput):
+        self.triggerPattern = userInput
+
     def setTokenCount(self):
         self.tokenCount = len(self.tokens)
 

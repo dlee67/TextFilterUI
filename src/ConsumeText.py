@@ -15,12 +15,13 @@ class ConsumeText(object):
     def populateList(self, fileDirectory, triggerPatterns):
         fileBeingProcessed = ProcessText()
         fileBeingProcessed.fileToString(fileDirectory)
-        fileBeingProcessed.addTriggerPattern(triggerPatterns)
+        fileBeingProcessed.setTriggerPattern(triggerPatterns)
         fileBeingProcessed.tokenizeTextFileContent()
+        fileBeingProcessed.matchPattern()
         fileBeingProcessed.setTokenCount()
         fileBeingProcessed.finalize()
         self.listOfProcessedText.append(fileBeingProcessed)
 
-    def displayList(self):
-        for obj in self.listOfProcessedText:
-            print(obj.isCategory)
+#    def displayList(self):
+#        for obj in self.listOfProcessedText:
+#            print(obj.isCategory)

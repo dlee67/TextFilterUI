@@ -49,3 +49,8 @@ Meannig, strategy vs tactics.
 -------------------------------------------------------------------------------
 
 - MatchCount not increasing, then, what's around the patterMatchCount
+
+-------------------------------------------------------------------------------
+
+- I get it, TDD is just another way of programming, really. Code gets so big at one point, where 
+TDD is the only way to find the bug in efficient manner, by the process of elimination.

@@ -43,11 +43,13 @@ class Tester(unittest.TestCase):
         self.assertEqual(tagger.patternMatchCount, 3)
 
     def test_matchPattern(self):
+        print("In the block of test_matchPattern")
         tagger = ProcessText()
         tagger.fileToString("../src/SampleTxtFiles/sample_one.txt")
         tagger.tokenizeTextFileContent()
         tagger.addTriggerPattern("sample")
         tagger.matchPattern()
+        tagger.finalize()
         self.assertEqual(tagger.patternMatchCount, 3)
 
     def test_changeMatchCountThreshold(self):
