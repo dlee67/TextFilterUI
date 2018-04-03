@@ -54,3 +54,6 @@ Meannig, strategy vs tactics.
 
 - I get it, TDD is just another way of programming, really. Code gets so big at one point, where 
 TDD is the only way to find the bug in efficient manner, by the process of elimination.
+
+- Is it just me, or is it pretty much an obligation that I need to have a server set up (or pay someone else to host it for me) in order to
+use any sort of data base?
