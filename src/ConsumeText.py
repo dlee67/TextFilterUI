@@ -13,7 +13,6 @@ class ConsumeText(object):
 
 # The populateList will have to look for the pool of text files.
     def populateList(self, fileDirectory, triggerPatterns):
-
         fileBeingProcessed = ProcessText()
         fileBeingProcessed.fileToString(fileDirectory)
         fileBeingProcessed.addTriggerPattern(triggerPatterns)
