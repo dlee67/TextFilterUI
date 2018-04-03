@@ -1,7 +1,12 @@
+# If I comment out sys.path, the from ConsumeText doesn't work,
+# and if I comment out os.chdir eveyrthing just breaks...
+# then, I mind as well program things centered around sys.path.
+
 import unittest
 import sys
 sys.path.append("../src")
 import os
+#os.chdir("../src/e-mails")
 from ConsumeText import ConsumeText
 from ProcessText import ProcessText
 from unittest import TestCase
@@ -28,8 +33,7 @@ class Tester(unittest.TestCase):
     def test_ConsumeTextContents(self):
         testObj = ConsumeText()
         testObj.populateList("./e-mails/spams/sample_one.txt", ["Dear", "Dong", "company"]) # Where ConsumeText will have list of ProcessText objects, waitingto be deciphered in the ML algorithm.
-        self.assertEqual(testObj.listOfProcessedText[0].textFileContent, open(, "r").read()) # Need to pass in the directory of sample_one.txt in spams.
-
+        self.assertEqual(testObj.listOfProcessedText[0].textFileContent, open("./spams/sample_one.txt", "r").read()) # Need to pass in the directory of sample_one.txt in spams.
 
 if __name__ == "__main__":
     unittest.main()
