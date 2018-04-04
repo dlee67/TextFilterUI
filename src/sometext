@@ -57,3 +57,5 @@ TDD is the only way to find the bug in efficient manner, by the process of elimi
 
 - Is it just me, or is it pretty much an obligation that I need to have a server set up (or pay someone else to host it for me) in order to
 use any sort of data base?
+
+- Well, at this point, I am guessing there is a need to pump the patternList.txt with the specific tokens.
