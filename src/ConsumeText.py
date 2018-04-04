@@ -3,15 +3,18 @@ import os
 from ProcessText import ProcessText
 
 '''
-    ConsumeTextTest needs to be able to have a list of ProcessText.py (where each of them has processed a text file, at least once).
+    ConsumeText is an object which encapsulates the listOfProcessedText, and able to populate it with an
+    ease.
 '''
-
 class ConsumeText(object):
 
     def __init__(self):
         self.listOfProcessedText = []
 
-# The populateList will have to look for the pool of text files.
+# The populateList will have to look for the pool of text files, and the triggerPatterns which
+# needs to be passed in to the ProcessText object.
+# Just for the reminder, if a user wants to populate listOfProcessedText with 10 objects,
+# then this function must be called 10 times.
     def populateList(self, fileDirectory, triggerPatterns):
         fileBeingProcessed = ProcessText()
         fileBeingProcessed.fileToString(fileDirectory)
@@ -21,7 +24,3 @@ class ConsumeText(object):
         fileBeingProcessed.setTokenCount()
         fileBeingProcessed.finalize()
         self.listOfProcessedText.append(fileBeingProcessed)
-
-#    def displayList(self):
-#        for obj in self.listOfProcessedText:
-#            print(obj.isCategory)

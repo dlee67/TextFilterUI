@@ -59,3 +59,8 @@ TDD is the only way to find the bug in efficient manner, by the process of elimi
 use any sort of data base?
 
 - Well, at this point, I am guessing there is a need to pump the patternList.txt with the specific tokens.
+
+------------------------------------------------------------------------------
+
+- Target values are the coordinates of the data points; meaning, by using the self.isCategory from the ProcessText objects, I must create the
+target values. 	

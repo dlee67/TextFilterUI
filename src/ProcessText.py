@@ -6,6 +6,7 @@ import sys
 #sys.path.append("./e-mails")
 
 class ProcessText(object):
+
 # patternMatchCount is increased each time when the userSpecified patterns are matched in the text being processed.
 # tokenCount is set to the amount of token existing.
 # tokenCountThreshold will be used in the finalize() to determine the boolean value of the isCategory
@@ -15,6 +16,7 @@ class ProcessText(object):
 # triggerPattern is user specified string tokens, which will increment the patternMatchCount.
 # verboseMode, when true, will obligate the ProcessText.py to verbosely explain everything that is going on.
 # isCategory will have to be assigned with a True value, if the patternMatchCount exceeds the specified limit.
+
     def __init__(self):
         self.patternMatchCount = 0
         self.matchCountThreshold = 5
