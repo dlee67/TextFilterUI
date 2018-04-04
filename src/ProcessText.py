@@ -27,6 +27,11 @@ class ProcessText(object):
         self.tokens = None
         self.triggerPattern =[]
         self.verboseMode = False
+
+        #Here is the plan, all the string tokens appended to here, those strings will be used to
+        #re-evaluate the patternList.txt
+        self.patternThatTriggered =[]
+
         print("ProcessText has been innitialized.")
 
 # Prints out the content inside the textFileContent
@@ -48,7 +53,9 @@ class ProcessText(object):
             if(self.verboseMode == True):
                 print("Current pattern: ", pattern)
                 print("Current frequency of the pattern: ", freqDist[pattern])
-            self.patternMatchCount = self.patternMatchCount + freqDist[pattern]
+            if(freqDist[pattern] > 0):
+                self.patternMatchCount = self.patternMatchCount + freqDist[pattern]
+                self.patternThatTriggered.append(pattern)
 
 # Enables the user to append a pattern to the triggerPattern list, which will be used to increment
 # the patternMatchCount, each time when the user specified pattern is found.
@@ -131,9 +138,6 @@ class ProcessText(object):
         self.matchCountThreshold = userInput
 
     def finalize(self):
-        print("finalized called.\n")
-        print("Token count now:", self.tokenCount, "\n")
-        print("Pattern match count:", self.patternMatchCount, "\n")
         if((self.matchCountThreshold <= self.patternMatchCount) and (self.tokenCountThreshold <= self.tokenCount)):
             self.isCategory = True
             return
