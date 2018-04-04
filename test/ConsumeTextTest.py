@@ -48,11 +48,19 @@ class Tester(unittest.TestCase):
         testObj.populateList("./e-mails/non-spams/sample_four.txt", open(os.path.join(os.path.dirname(__file__) + "/../src/patternList.txt")).read().split(","))
         testObj.populateList("./e-mails/non-spams/sample_five.txt", open(os.path.join(os.path.dirname(__file__) + "/../src/patternList.txt")).read().split(","))
 # Much more complete product will most likely have it's array dynamic; therefore, this Tester must be fixed later.
-        for index in range(0, 9):
-            if(index > 4):
-                self.assertEqual(testObj.listOfProcessedText[index].isCategory, False)
-                continue
-            self.assertEqual(testObj.listOfProcessedText[index].isCategory, True)
+        try:
+            for index in range(0, 9):
+                if(index > 4):
+                    self.assertEqual(testObj.listOfProcessedText[index].isCategory, False)
+                    continue
+                self.assertEqual(testObj.listOfProcessedText[index].isCategory, True)
+        except AssertionError:
+            print("Catch block starting ================================")
+            print(testObj.listOfProcessedText[index].textFileContent)
+            print("The matchPattern count:",testObj.listOfProcessedText[index].patternMatchCount)
+            print("The tokens are:",testObj.listOfProcessedText[index].tokens)
+            print("Patterns that triggered:",testObj.listOfProcessedText[index].patternThatTriggered[:])
+            print("Catch block ending ==================================\n\n\n")
 
 if __name__ == "__main__":
     unittest.main()
