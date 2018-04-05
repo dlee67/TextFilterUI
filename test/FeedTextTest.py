@@ -36,6 +36,7 @@ class Test(unittest.TestCase):
     def test_consumeTextFiles(self):
         feedText = FeedText()
         processedTextStrings = []
+
         feedText.setDirectory("/home/bob/Desktop/WorkSpace/TextFilterUI/src/e-mails/spams")
         feedText.setListOfFiles() # Innitialize the list of file names.
         feedText.consumeTextFiles() # In the specified directory, with the set of file names, populate the list in ConsumeText object.
@@ -47,8 +48,13 @@ class Test(unittest.TestCase):
         self.assertEqual(open("../src/e-mails/spams/sample_four.txt", "r").read() in processedTextStrings, True)
         self.assertEqual(open("../src/e-mails/spams/sample_five.txt", "r").read() in processedTextStrings, True)
 
-        #feedText.setDirectory("/home/bob/Desktop/WorkSpace/TextFilterUI/src/e-mails/non-spams")
-        #feedText.setListOfFiles()
-        #feedText.consumeTextFiles()
-        #for index in range(5, 10):
-        #    processedTextStrings.append(feedText.consumedTexts.listOfProcessedText[index].textFileContent)
+        feedText.setDirectory("/home/bob/Desktop/WorkSpace/TextFilterUI/src/e-mails/non-spams")
+        feedText.setListOfFiles()
+        feedText.consumeTextFiles()
+        for index in range(5, 10):
+            processedTextStrings.append(feedText.consumedTexts.listOfProcessedText[index].textFileContent)
+        self.assertEqual(open("../src/e-mails/non-spams/sample_one.txt", "r").read() in processedTextStrings, True)
+        self.assertEqual(open("../src/e-mails/non-spams/sample_two.txt", "r").read() in processedTextStrings, True)
+        self.assertEqual(open("../src/e-mails/non-spams/sample_three.txt", "r").read() in processedTextStrings, True)
+        self.assertEqual(open("../src/e-mails/non-spams/sample_four.txt", "r").read() in processedTextStrings, True)
+        self.assertEqual(open("../src/e-mails/non-spams/sample_five.txt", "r").read() in processedTextStrings, True)
