@@ -35,5 +35,5 @@ class FeedText(object):
         self.consumedTexts = ConsumeText()
 # Uses the list of string tokens as the reference, to populateList
         for fileName in self.listOfFiles:
-            if(fileName.contains(".txt")):
-                consumedTexts.populateList(userInput + "/" + fileName, self.taggerPattern)
+            if((fileName.find(".txt") >= 0)):
+                self.consumedTexts.populateList(self.directory + "/" + fileName, self.taggerPattern)

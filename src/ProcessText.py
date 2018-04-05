@@ -33,7 +33,6 @@ class ProcessText(object):
         #Here is the plan, all the string tokens appended to here, those strings will be used to
         #re-evaluate the patternList.txt
         self.patternThatTriggered =[]
-
         print("ProcessText has been innitialized.")
 
 # Prints out the content inside the textFileContent
