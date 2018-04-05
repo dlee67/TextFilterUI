@@ -31,7 +31,7 @@ class FeedText(object):
 # Let's obligate the user to call setDirectory, and setListOfFiles, before letting use the consumeTextFiles
 # For all the content inside the specified directory, all the .txt files will be "parsed" into the consumeTextObj's
 # listOfProcessedText.
-    def consumeTextFiles(self, userInput):
+    def consumeTextFiles(self):
         self.consumedTexts = ConsumeText()
 # Uses the list of string tokens as the reference, to populateList
         for fileName in self.listOfFiles:
