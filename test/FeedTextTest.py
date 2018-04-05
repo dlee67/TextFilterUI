@@ -15,7 +15,6 @@ class Test(unittest.TestCase):
     def test_innitialization(self):
         feedTextObj = FeedText()
         self.assertEqual(feedTextObj.taggerPattern, open(os.path.join(os.path.dirname(__file__) + "/../src/patternList.txt")).read().split(","))
-        self.assertEqual(feedTextObj.consumedTexts, None)
 
     def test_setDirectory(self):
         feedTextObj = FeedText()
@@ -58,3 +57,6 @@ class Test(unittest.TestCase):
         self.assertEqual(open("../src/e-mails/non-spams/sample_three.txt", "r").read() in processedTextStrings, True)
         self.assertEqual(open("../src/e-mails/non-spams/sample_four.txt", "r").read() in processedTextStrings, True)
         self.assertEqual(open("../src/e-mails/non-spams/sample_five.txt", "r").read() in processedTextStrings, True)
+
+    def test_generateTargetValues(self):
+        
