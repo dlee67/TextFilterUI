@@ -19,6 +19,35 @@ class Test(unittest.TestCase):
 
     def test_setDirectory(self):
         feedTextObj = FeedText()
+        feedTextObj.setDirectory("/home/bob/Desktop/WorkSpace/TextFilterUI")
+        self.assertEqual(feedTextObj.directory, "/home/bob/Desktop/WorkSpace/TextFilterUI")
 
-    def consumeTextFiles(self):
-        pass
+    def test_setListOfFile(self):
+        feedText = FeedText()
+        feedText.setDirectory("/home/bob/Desktop/WorkSpace/TextFilterUI/src/SampleTxtFiles")
+        feedText.setListOfFiles()
+        self.assertEqual("poem_of_unicorn.txt" in feedText.listOfFiles, True)
+        self.assertEqual("sample_one.txt" in feedText.listOfFiles, True)
+        self.assertEqual("sample_two.txt" in feedText.listOfFiles, True)
+
+# So, each elements in the populated list must have the exact same content as the
+# text files.
+# Now that I think about it, I need to setDirectory twice, according to my design.
+    def test_consumeTextFiles(self):
+        feedText = FeedText()
+        feedText.setDirectory("/home/bob/Desktop/WorkSpace/TextFilterUI/src/e-mails/spams")
+        feedText.setListOfFiles()
+        feedText.consumeTextFiles()
+        self.assertEqaul(feedText,open("../src/e-mails/spams/sample_one.txt").read)
+        self.assertEqaul(,open("../src/e-mails/spams/sample_two.txt").read)
+        self.assertEqaul(,open("../src/e-mails/spams/sample_three.txt").read)
+        self.assertEqaul(,open("../src/e-mails/spams/sample_four.txt").read)
+        self.assertEqaul(,open("../src/e-mails/spams/sample_five.txt").read)
+        feedText.setDirectory("/home/bob/Desktop/WorkSpace/TextFilterUI/src/e-mails/non-spams")
+        feedText.setListOfFiles()
+        feedText.consumeTextFiles()
+        self.assertEqaul(,open("../src/e-mails/non-spams/sample_one.txt").read)
+        self.assertEqaul(,open("../src/e-mails/non-spams/sample_two.txt").read)
+        self.assertEqaul(,open("../src/e-mails/non-spams/sample_three.txt").read)
+        self.assertEqaul(,open("../src/e-mails/non-spams/sample_four.txt").read)
+        self.assertEqaul(,open("../src/e-mails/non-spams/sample_five.txt").read)

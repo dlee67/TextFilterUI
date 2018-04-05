@@ -1,7 +1,6 @@
 # If I comment out sys.path, the from ConsumeText doesn't work,
 # and if I comment out os.chdir eveyrthing just breaks...
 # then, I mind as well program things centered around sys.path.
-
 import unittest
 import sys
 sys.path.append("../src")
