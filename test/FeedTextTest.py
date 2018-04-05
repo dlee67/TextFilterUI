@@ -59,4 +59,12 @@ class Test(unittest.TestCase):
         self.assertEqual(open("../src/e-mails/non-spams/sample_five.txt", "r").read() in processedTextStrings, True)
 
     def test_generateTargetValues(self):
-        
+        feedText = FeedText()
+        feedText.setDirectory("/home/bob/Desktop/WorkSpace/TextFilterUI/src/e-mails/spams")
+        feedText.setListOfFiles()
+        feedText.consumeTextFiles()
+        feedText.setDirectory("/home/bob/Desktop/WorkSpace/TextFilterUI/src/e-mails/non-spams")
+        feedText.setListOfFiles()
+        feedText.consumeTextFiles()
+        feedText.generateTargetValues()
+        self.assertEqual(feedText.targetValues, [0, 0, 0, 0, 0, 1, 1, 1, 1, 1])
