@@ -35,19 +35,20 @@ class Test(unittest.TestCase):
 # Now that I think about it, I need to setDirectory twice, according to my design.
     def test_consumeTextFiles(self):
         feedText = FeedText()
+        processedTextStrings = []
         feedText.setDirectory("/home/bob/Desktop/WorkSpace/TextFilterUI/src/e-mails/spams")
         feedText.setListOfFiles() # Innitialize the list of file names.
         feedText.consumeTextFiles() # In the specified directory, with the set of file names, populate the list in ConsumeText object.
-        self.assertEqual(feedText.consumedTexts.listOfProcessedText[0].textFileContent, open("../src/e-mails/spams/sample_one.txt").read)
-        self.assertEqual(feedText.consumedTexts.listOfProcessedText[1].textFileContent, open("../src/e-mails/spams/sample_two.txt").read)
-        self.assertEqual(feedText.consumedTexts.listOfProcessedText[2].textFileContent, open("../src/e-mails/spams/sample_three.txt").read)
-        self.assertEqual(feedText.consumedTexts.listOfProcessedText[3].textFileContent, open("../src/e-mails/spams/sample_four.txt").read)
-        self.assertEqual(feedText.consumedTexts.listOfProcessedText[4].textFileContent, open("../src/e-mails/spams/sample_five.txt").read)
-        feedText.setDirectory("/home/bob/Desktop/WorkSpace/TextFilterUI/src/e-mails/non-spams")
-        feedText.setListOfFiles()
-        feedText.consumeTextFiles()
-        self.assertEqual(feedText.consumedTexts.listOfProcessedText[5].textFileContent, open("../src/e-mails/non-spams/sample_one.txt").read)
-        self.assertEqual(feedText.consumedTexts.listOfProcessedText[6].textFileContent, open("../src/e-mails/non-spams/sample_two.txt").read)
-        self.assertEqual(feedText.consumedTexts.listOfProcessedText[7].textFileContent, open("../src/e-mails/non-spams/sample_three.txt").read)
-        self.assertEqual(feedText.consumedTexts.listOfProcessedText[8].textFileContent, open("../src/e-mails/non-spams/sample_four.txt").read)
-        self.assertEqual(feedText.consumedTexts.listOfProcessedText[9].textFileContent, open("../src/e-mails/non-spams/sample_five.txt").read)
+        for index in range(0, 5):
+            processedTextStrings.append(feedText.consumedTexts.listOfProcessedText[index].textFileContent)
+        self.assertEqual(open("../src/e-mails/spams/sample_one.txt", "r").read() in processedTextStrings, True)
+        self.assertEqual(open("../src/e-mails/spams/sample_two.txt", "r").read() in processedTextStrings, True)
+        self.assertEqual(open("../src/e-mails/spams/sample_three.txt", "r").read() in processedTextStrings, True)
+        self.assertEqual(open("../src/e-mails/spams/sample_four.txt", "r").read() in processedTextStrings, True)
+        self.assertEqual(open("../src/e-mails/spams/sample_five.txt", "r").read() in processedTextStrings, True)
+
+        #feedText.setDirectory("/home/bob/Desktop/WorkSpace/TextFilterUI/src/e-mails/non-spams")
+        #feedText.setListOfFiles()
+        #feedText.consumeTextFiles()
+        #for index in range(5, 10):
+        #    processedTextStrings.append(feedText.consumedTexts.listOfProcessedText[index].textFileContent)
