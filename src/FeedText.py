@@ -6,8 +6,9 @@ from ConsumeText import ConsumeText
 from pathlib import Path
 
 '''
-    I will likely have to add a functionality which consumes all the text files in some sort of "pool."
-    In this particular case, the "pool" comes from the patternList.txt.
+	On an abstarct sense, this class inntializes the ConsumeText object with meaningful data,
+	and innitializes itself with the meaninful data to be fed to MLAlg.py; so, it could be processed
+	in the K-Neighbors alogrithm.
 '''
 
 class FeedText(object):
