@@ -12,10 +12,11 @@ from pathlib import Path
 class FeedText(object):
 
     def __init__(self):
-        self.consumedTexts = None
+        self.consumedTexts = ConsumeText()
         self.directory = None
         self.listOfFiles = None
         self.taggerPattern = open(os.path.join(os.path.dirname(__file__) + "/../src/patternList.txt")).read().split(",")
+        self.targetValues = []
 
 # It might be a good idea to have the user always pass in the relative path.
     def setDirectory(self, userInput):
@@ -32,8 +33,16 @@ class FeedText(object):
 # For all the content inside the specified directory, all the .txt files will be "parsed" into the consumeTextObj's
 # listOfProcessedText.
     def consumeTextFiles(self):
-        self.consumedTexts = ConsumeText()
 # Uses the list of string tokens as the reference, to populateList
         for fileName in self.listOfFiles:
             if((fileName.find(".txt") >= 0)):
                 self.consumedTexts.populateList(self.directory + "/" + fileName, self.taggerPattern)
+
+# Generate the target values for the machine learning algorithm I am about to feed this data to.
+    def generateTargetValues(self):
+        for obj in self.consumedTexts.listOfProcessedText:
+            if (obj.isCategory == True):
+                self.targetValues.append(0)
+            elif (obj.isCategory == False):
+                self.targetValues.append(1)
+        self.targetValues.sort()
