@@ -48,5 +48,5 @@ class MLAlg(object):
     def predictUserInput(self, userInput):
         knn = Kn(n_neighbors=1)
         knn.fit(self.inputValues, self.targetValues)
-        result = knn.predict([userInput])
+        result = knn.predict([userInput.patternMatchCount, userInput.tokenCount])
         print("predict() returned: ", result)
