@@ -63,4 +63,9 @@ use any sort of data base?
 ------------------------------------------------------------------------------
 
 - Target values are the coordinates of the data points; meaning, by using the self.isCategory from the ProcessText objects, I must create the
-target values. 	
+target values. 
+
+-----------------------------------------------------------------------------
+
+- So, I guess it'd be better if I start things off by writing unittest.
+	

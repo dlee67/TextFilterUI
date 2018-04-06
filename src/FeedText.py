@@ -17,6 +17,7 @@ class FeedText(object):
         self.listOfFiles = None
         self.taggerPattern = open(os.path.join(os.path.dirname(__file__) + "/../src/patternList.txt")).read().split(",")
         self.targetValues = []
+        self.inputValues = None
 
 # It might be a good idea to have the user always pass in the relative path.
     def setDirectory(self, userInput):
@@ -46,3 +47,11 @@ class FeedText(object):
             elif (obj.isCategory == False):
                 self.targetValues.append(1)
         self.targetValues.sort()
+
+# The function needs to assign 2-dimensional array to
+# input values.
+    def generateInputValues(self):
+        self.inputValues = []
+        for obj in self.consumedTexts.listOfProcessedText:
+            newElement = [obj.patternMatchCount, obj.tokenCount]
+            self.inputValues.append(newElement)

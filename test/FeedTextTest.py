@@ -68,3 +68,15 @@ class Test(unittest.TestCase):
         feedText.consumeTextFiles()
         feedText.generateTargetValues()
         self.assertEqual(feedText.targetValues, [0, 0, 0, 0, 0, 1, 1, 1, 1, 1])
+
+    def test_generateInputValues(self):
+        print("In the block of test_generateInputValues")
+        feedText = FeedText()
+        feedText.setDirectory("/home/bob/Desktop/WorkSpace/TextFilterUI/src/e-mails/spams")
+        feedText.setListOfFiles()
+        feedText.consumeTextFiles()
+        feedText.setDirectory("/home/bob/Desktop/WorkSpace/TextFilterUI/src/e-mails/non-spams")
+        feedText.setListOfFiles()
+        feedText.consumeTextFiles()
+        feedText.generateInputValues()
+        print(feedText.inputValues)
