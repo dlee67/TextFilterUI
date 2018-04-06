@@ -7,6 +7,7 @@ from pathlib import Path
 
 '''
     I will likely have to add a functionality which consumes all the text files in some sort of "pool."
+    In this particular case, the "pool" comes from the patternList.txt.
 '''
 
 class FeedText(object):

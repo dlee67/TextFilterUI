@@ -25,8 +25,8 @@ class MLAlg(object):
         self.inputValues = userInput
 
     def plotValues(self):
-        for counter in range(0, len(userInput)):
-            plt.scatter(userInput[counter][0], userInput[counter][1])
+        for counter in range(0, len(self.inputValues)):
+            plt.scatter(self.inputValues[counter][0], self.inputValues[counter][1])
         plt.xlabel("x-axis")
         plt.ylabel("y-axis")
         plt.show()
