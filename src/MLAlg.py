@@ -3,6 +3,7 @@ import numpy as np
 import pandas as pd
 
 from FeedText import FeedText
+from ProcessText import ProcessText
 from scipy import sparse
 from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier as Kn
@@ -56,3 +57,6 @@ class MLAlg(object):
         # From the userInput, the patternMatchCount and tokenCount field will be used to see how the represented text file needs to be classified.
         result = knn.predict([userInput.patternMatchCount, userInput.tokenCount])
         print("predict() returned: ", result)
+
+    def createUserInput(self):
+        = ProcessText()
