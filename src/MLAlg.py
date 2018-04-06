@@ -11,6 +11,11 @@ from sklearn.svm import LinearSVC
 
 class MLAlg(object):
 
+'''
+	This class is dependent on the data from FeedText.py, where this class
+	will expect the FeedText.py to have its field innitialized with
+	meaningful data before hands.
+'''
     def __init__(self):
 # For the K-neighbors algrithm to classify certain data points.
         self.targetValues = None
@@ -48,5 +53,6 @@ class MLAlg(object):
     def predictUserInput(self, userInput):
         knn = Kn(n_neighbors=1)
         knn.fit(self.inputValues, self.targetValues)
+        # From the userInput, the patternMatchCount and tokenCount field will be used to see how the represented text file needs to be classified.
         result = knn.predict([userInput.patternMatchCount, userInput.tokenCount])
         print("predict() returned: ", result)
