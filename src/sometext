@@ -68,4 +68,8 @@ target values.
 -----------------------------------------------------------------------------
 
 - So, I guess it'd be better if I start things off by writing unittest.
+
+-----------------------------------------------------------------------------
+
+- It's quite conclusive that I should make the design before I code anything.
 	

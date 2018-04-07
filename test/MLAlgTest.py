@@ -62,5 +62,6 @@ class Test(unittest.TestCase):
 
         kAlg.setTargetValues(feedText.targetValues)
         kAlg.setInputValues(feedText.inputValues)
+        kAlg.setTriggerPattern(feedText.taggerPattern)
         kAlg.plotValues()
         kAlg.plotRegression()

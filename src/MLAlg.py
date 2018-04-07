@@ -11,7 +11,6 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.svm import LinearSVC
 
 class MLAlg(object):
-
 '''
 	This class is dependent on the data from FeedText.py, where this class
 	will expect the FeedText.py to have its field innitialized with
@@ -23,12 +22,17 @@ class MLAlg(object):
 # Input values are composed of x and y values, where x value represents patternMatchCount,
 # and the y value represents token counts.
         self.inputValues = None
+# The triggerPattern will be needed for future user input.
+        self.triggerPattern = None
 
     def setTargetValues(self, userInput):
         self.targetValues = userInput
 
     def setInputValues(self, userInput):
         self.inputValues = userInput
+
+    def setTriggerPattern(self, userInput):
+        self.triggerPattern = userInput
 
     def plotValues(self):
         for counter in range(0, len(self.inputValues)):
@@ -58,5 +62,11 @@ class MLAlg(object):
         result = knn.predict([userInput.patternMatchCount, userInput.tokenCount])
         print("predict() returned: ", result)
 
-    def createUserInput(self):
-        = ProcessText()
+    def createUserInput(self, directory):
+        newFile = ProcessText()
+        fileBeingProcessed.fileToString(directory)
+        fileBeingProcessed.setTriggerPattern(self.triggerPattern)
+        fileBeingProcessed.tokenizeTextFileContent()
+        fileBeingProcessed.matchPattern()
+        fileBeingProcessed.setTokenCount()
+        fileBeingProcessed.finalize()
