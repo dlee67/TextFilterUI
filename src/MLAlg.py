@@ -62,6 +62,7 @@ class MLAlg(object):
         result = knn.predict([userInput.patternMatchCount, userInput.tokenCount])
         print("predict() returned: ", result)
 
+# The user specifies the directory of the new text file, which will be guessed if it's categorizes under the user specified category.
     def createUserInput(self, directory):
         newFile = ProcessText()
         fileBeingProcessed.fileToString(directory)

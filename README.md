@@ -21,3 +21,7 @@ is used to count up the isCounter, the tester.py fails.
 The code became much more "cleaner," and added a new class variable called tokenCount because the ML algorithm
 I am about to feed the data to needs values representable as x-axis value and y-axis value.
 I think the ProcessText.py, main.py, and the ProcessTextTester.py are completed enough?
+
+# 04/06/18
+From the looks of things, there needs to be an interface that utilizes the functions in MLAlg now.
+To be conclusive about things, I still don't fully grasp how this application can be interacted with the end users.

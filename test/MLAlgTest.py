@@ -46,6 +46,10 @@ class Test(unittest.TestCase):
         feedText.consumeTextFiles()
         feedText.generateInputValues()
 
+# Some where in my machine, I need to prepare a sample text file, ready to be categorized.
+    def test_createUserInput(self):
+
+
     def test_something(self):
         kAlg = MLAlg()
         feedText = FeedText()
