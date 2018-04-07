@@ -25,13 +25,9 @@ class Test(unittest.TestCase):
         feedText.setListOfFiles()
         feedText.consumeTextFiles()
         feedText.generateTargetValues()
-        # By the end of above block, the feedText object should have ConsumeText object, which
-        # should be composed of ProcessText object which should have its field assigned with
-        # meaningful values.
         kAlg.setTargetValues(feedText.targetValues)
         self.assertEqual(kAlg.targetValues, [0, 0, 0, 0, 0, 1, 1, 1, 1, 1])
 
-# Some where in my machine, I need to prepare a sample text file, ready to be categorized.
     def test_createUserInput(self):
         kAlg = MLAlg()
         feedText = FeedText()
@@ -47,4 +43,4 @@ class Test(unittest.TestCase):
         kAlg.setTargetValues(feedText.targetValues)
         kAlg.setInputValues(feedText.inputValues)
         kAlg.setTriggerPattern(feedText.taggerPattern)
-        kAlg.createUserInputAndPredict("/home/bob/Desktop/WorkSpace/TextFilterUI/src/e-mails/TestInput/sample_one.txt")
+        self.assertEqual(kAlg.createUserInputAndPredict("/home/bob/Desktop/WorkSpace/TextFilterUI/src/e-mails/TestInput/sample_one.txt"), [1])
