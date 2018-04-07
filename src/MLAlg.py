@@ -59,16 +59,16 @@ class MLAlg(object):
         knn = Kn(n_neighbors=1)
         knn.fit(self.inputValues, self.targetValues)
         # From the userInput, the patternMatchCount and tokenCount field will be used to see how the represented text file needs to be classified.
-        result = knn.predict([userInput.patternMatchCount, userInput.tokenCount])
+        result = knn.predict([[userInput.patternMatchCount, userInput.tokenCount]])
         print("predict() returned: ", result)
 
 # The user specifies the directory of the new text file, which will be guessed if it's categorizes under the user specified category.
-    def createUserInput(self, directory):
+    def createUserInputAndPredict(self, directory):
         newFile = ProcessText()
-        fileBeingProcessed.fileToString(directory)
-        fileBeingProcessed.setTriggerPattern(self.triggerPattern)
-        fileBeingProcessed.tokenizeTextFileContent()
-        fileBeingProcessed.matchPattern()
-        fileBeingProcessed.setTokenCount()
-        fileBeingProcessed.finalize()
-        predictUserInput(newFile)
+        newFile.fileToString(directory)
+        newFile.setTriggerPattern(self.triggerPattern)
+        newFile.tokenizeTextFileContent()
+        newFile.matchPattern()
+        newFile.setTokenCount()
+        newFile.finalize()
+        self.predictUserInput(newFile)

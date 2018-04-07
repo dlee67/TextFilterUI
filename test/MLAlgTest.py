@@ -31,30 +31,11 @@ class Test(unittest.TestCase):
         kAlg.setTargetValues(feedText.targetValues)
         self.assertEqual(kAlg.targetValues, [0, 0, 0, 0, 0, 1, 1, 1, 1, 1])
 
-
-    def test_generateInputValues(self):
-        pass
-        kAlg = MLAlg()
-        feedText = FeedText()
-        processedTextStrings = []
-
-        feedText.setDirectory("/home/bob/Desktop/WorkSpace/TextFilterUI/src/e-mails/spams")
-        feedText.setListOfFiles() # Innitialize the list of file names.
-        feedText.consumeTextFiles() # In the specified directory, with the set of file names, populate the list in ConsumeText object.
-        feedText.setDirectory("/home/bob/Desktop/WorkSpace/TextFilterUI/src/e-mails/non-spams")
-        feedText.setListOfFiles()
-        feedText.consumeTextFiles()
-        feedText.generateInputValues()
-
 # Some where in my machine, I need to prepare a sample text file, ready to be categorized.
     def test_createUserInput(self):
-
-
-    def test_something(self):
         kAlg = MLAlg()
         feedText = FeedText()
         processedTextStrings = []
-
         feedText.setDirectory("/home/bob/Desktop/WorkSpace/TextFilterUI/src/e-mails/spams")
         feedText.setListOfFiles() # Innitialize the list of file names.
         feedText.consumeTextFiles() # In the specified directory, with the set of file names, populate the list in ConsumeText object.
@@ -63,9 +44,7 @@ class Test(unittest.TestCase):
         feedText.consumeTextFiles()
         feedText.generateInputValues()
         feedText.generateTargetValues()
-
         kAlg.setTargetValues(feedText.targetValues)
         kAlg.setInputValues(feedText.inputValues)
         kAlg.setTriggerPattern(feedText.taggerPattern)
-        kAlg.plotValues()
-        kAlg.plotRegression()
+        kAlg.createUserInputAndPredict("/home/bob/Desktop/WorkSpace/TextFilterUI/src/e-mails/TestInput/sample_one.txt")
