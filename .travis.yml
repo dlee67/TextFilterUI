@@ -1,1 +1,13 @@
 language: python
+
+python:
+   - 3.6
+
+before-script:
+   - composer install --no-interaction
+
+script:
+   - python -m unittest ./test/ConsumeTextText.py
+   - python -m unittest ./test/FeedTextTest.py
+   - python -m unittest ./test/MLAlgText.py
+   - python -m unittest ./test/ProcessTextTest.py
