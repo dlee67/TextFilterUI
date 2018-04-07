@@ -1,8 +1,5 @@
 language: python
 
-install:
-   - pip install unittest3
-
 script:
    - python -m unittest ./test/ConsumeTextText.py
    - python -m unittest ./test/FeedTextTest.py
