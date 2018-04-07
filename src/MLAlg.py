@@ -11,11 +11,11 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.svm import LinearSVC
 
 class MLAlg(object):
-'''
-	This class is dependent on the data from FeedText.py, where this class
-	will expect the FeedText.py to have its field innitialized with
-	meaningful data before hands.
-'''
+
+#	This class is dependent on the data from FeedText.py, where this class
+#	will expect the FeedText.py to have its field innitialized with
+#	meaningful data before hands.
+
     def __init__(self):
 # For the K-neighbors algrithm to classify certain data points.
         self.targetValues = None
@@ -70,3 +70,4 @@ class MLAlg(object):
         fileBeingProcessed.matchPattern()
         fileBeingProcessed.setTokenCount()
         fileBeingProcessed.finalize()
+        predictUserInput(newFile)
