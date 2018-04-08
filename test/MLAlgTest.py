@@ -40,7 +40,9 @@ class Test(unittest.TestCase):
         feedText.consumeTextFiles()
         feedText.generateInputValues()
         feedText.generateTargetValues()
+
         kAlg.setTargetValues(feedText.targetValues)
         kAlg.setInputValues(feedText.inputValues)
         kAlg.setTriggerPattern(feedText.taggerPattern)
+
         self.assertEqual(kAlg.createUserInputAndPredict("/home/bob/Desktop/WorkSpace/TextFilterUI/src/e-mails/TestInput/sample_one.txt"), [1])
