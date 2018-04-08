@@ -1,11 +1,11 @@
 language: python
 python: "3.6"
 
-#install: pip install unittest
+install: pip3 install unittest
 export: PYTHONPATH=$PYTHONPATH:$(pwd)
 
-#script:
-#   - python -m unittest ./test/ConsumeTextText.py
-#   - python -m unittest ./test/FeedTextTest.py
-#   - python -m unittest ./test/MLAlgText.py
-#   - python -m unittest ./test/ProcessTextTest.py
+script:
+   - python -m unittest ./test/ConsumeTextText.py
+   - python -m unittest ./test/FeedTextTest.py
+   - python -m unittest ./test/MLAlgText.py
+   - python -m unittest ./test/ProcessTextTest.py
