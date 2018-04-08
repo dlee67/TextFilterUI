@@ -3,7 +3,7 @@ python:
    - "3.6"
 
 script:
-   - ./test/ConsumeTextText.py
-   - ./test/FeedTextTest.py
-   - ./test/MLAlgText.py
-   - ./test/ProcessTextTest.py
+   - ConsumeTextText.py
+   - FeedTextTest.py
+   - MLAlgText.py
+   - ProcessTextTest.py
