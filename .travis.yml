@@ -2,6 +2,8 @@ language: python
 python: "3.6"
 
 export: PYTHONPATH=$PYTHONPATH:$(pwd)
+install:
+   - pip3 install nltk
 
 script:
    - python -m unittest ./test/ConsumeTextText.py
