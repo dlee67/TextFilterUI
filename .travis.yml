@@ -1,9 +1,9 @@
 language: python
 python:
    - "3.6"
-
+install: True
 script:
-   - ConsumeTextText.py
-   - FeedTextTest.py
-   - MLAlgText.py
-   - ProcessTextTest.py
+   - python -m unittest ./test/ConsumeTextText.py
+   - python -m unittest ./test/FeedTextTest.py
+   - python -m unittest ./test/MLAlgText.py
+   - python -m unittest ./test/ProcessTextTest.py
