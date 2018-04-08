@@ -1,6 +1,8 @@
 language: python
 python:
    - "3.6"
+install:
+   pip install unittest
 export: PYTHONPATH=$PYTHONPATH:$(pwd)
 script:
    - python -m unittest ./test/ConsumeTextText.py
