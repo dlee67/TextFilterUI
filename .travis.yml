@@ -1,7 +1,7 @@
 language: python
 python:
    - "3.6"
-install: True
+export: PYTHONPATH=$PYTHONPATH:$(pwd)
 script:
    - python -m unittest ./test/ConsumeTextText.py
    - python -m unittest ./test/FeedTextTest.py
