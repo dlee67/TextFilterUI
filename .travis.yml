@@ -5,7 +5,7 @@ install: pip install unittest
 export: PYTHONPATH=$PYTHONPATH:$(pwd)
 
 script:
-   - python -m unittest ./test/ConsumeTextText.py
-   - python -m unittest ./test/FeedTextTest.py
-   - python -m unittest ./test/MLAlgText.py
-   - python -m unittest ./test/ProcessTextTest.py
+   - ./test/ConsumeTextText.py
+   - ./test/FeedTextTest.py
+   - ./test/MLAlgText.py
+   - ./test/ProcessTextTest.py
