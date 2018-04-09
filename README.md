@@ -27,4 +27,5 @@ I think the ProcessText.py, main.py, and the ProcessTextTester.py are completed 
 From the looks of things, there needs to be an interface that utilizes the functions in MLAlg now.
 To be conclusive about things, I still don't fully grasp how this application can be interacted with the end users.
 
-
+# 04/09/18
+This project will go into a hibernation.
