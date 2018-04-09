@@ -13,7 +13,7 @@ As of now, there are "documents" being created to elaborate the projects in extr
 
 And here is the architecture below.
 
-[[https://github.com/dlee67/TextFilterUI/Plan.png]]
+![Screenshot](Plan.png)
 
 # I thought you didn't like Python?
 I don't like certain traits about it (like, needing to care about the whitespace), but I think it's a great language.
