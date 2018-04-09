@@ -47,6 +47,15 @@ class ProcessText(object):
     def printPatternMatchCount(self):
         print("Currently, the amount of counter is: ", self.patternMatchCount)
 
+# Enables the user to append a pattern to the triggerPattern list, which will be used to increment
+# the patternMatchCount, each time when the user specified pattern is found.
+    def addTriggerPattern(self, userInput):
+        if(self.verboseMode):
+            print("In the addTriggerPattern block.")
+        self.triggerPattern.append(str(userInput))
+        if(self.verboseMode):
+            print("The list of trigger pattern is: ", triggerPattern[:])
+
 # By comparing the tokens to the user specified patterns, increment the patternMatchCount.
     def matchPattern(self):
         freqDist = nltk.FreqDist(self.tokens)
@@ -57,15 +66,6 @@ class ProcessText(object):
             if(freqDist[pattern] > 0):
                 self.patternMatchCount = self.patternMatchCount + freqDist[pattern]
                 self.patternThatTriggered.append(pattern)
-
-# Enables the user to append a pattern to the triggerPattern list, which will be used to increment
-# the patternMatchCount, each time when the user specified pattern is found.
-    def addTriggerPattern(self, userInput):
-        if(self.verboseMode):
-            print("In the addTriggerPattern block.")
-        self.triggerPattern.append(str(userInput))
-        if(self.verboseMode):
-            print("The list of trigger pattern is: ", triggerPattern[:])
 
 # The verbose mode will enable the user to
     def verboseModeOn(self):

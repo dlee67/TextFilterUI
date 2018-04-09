@@ -11,6 +11,10 @@ Each text files will be deciphered as a 0, or 1, in accordance to the user's spe
 I am trying to come up with graphical examples of this project's mechanism by April 8th.
 As of now, there are "documents" being created to elaborate the projects in extreme depth.
 
+And here is the architecture below.
+
+[[https://github.com/dlee67/TextFilterUI/Plan.png]]
+
 # I thought you didn't like Python?
 I don't like certain traits about it (like, needing to care about the whitespace), but I think it's a great language.
 
